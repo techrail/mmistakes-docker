@@ -13,7 +13,7 @@ COPY Gemfile /app/Gemfile
 # Update ubuntu and install rbenv and compile and install Ruby version 3.1.2
 RUN apt update && \
 	apt upgrade -y && \
-	apt install -y git curl wget build-essential libz-dev libssl-dev && \
+	apt install -y git curl wget zsh build-essential libz-dev autoconf bison patch rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev && \
 	git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
 	git clone https://github.com/rbenv/ruby-build.git "$(~/.rbenv/bin/rbenv root)"/plugins/ruby-build && \
 	~/.rbenv/bin/rbenv install -fv 3.1.2
@@ -28,4 +28,7 @@ RUN echo 'eval "$(~/.rbenv/bin/rbenv init - bash)"' >> ~/.bash_profile
 
 # Set just-installed ruby to be globally available
 RUN rbenv global 3.1.2
+
+# Copy script
+COPY build_site.zsh /app/build_site.zsh
 
