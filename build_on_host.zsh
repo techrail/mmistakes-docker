@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-
 if [[ ! -v MM_SOURCE ]]; then
 	echo "MM_SOURCE is not set"
 	return 1
